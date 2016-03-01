@@ -8,10 +8,14 @@ var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elastic
 
 });
 
-
 console.log("Starting up serial host...");
+ var message = "Waiting";
 
-var message = "LED On";
+socket.on('message', function(msg){
+
+    message = msg;
+    console.log(message);
+});
 
 function write() {
     sp.open(function(err) {

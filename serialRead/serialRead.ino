@@ -8,6 +8,8 @@ void setup() {
 
 void loop() {
   while (Serial.available()) {
+
+
       digitalWrite(ledPin, HIGH); //LED on while receiving
 
     incoming = Serial.readString();
