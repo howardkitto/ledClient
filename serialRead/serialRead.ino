@@ -9,12 +9,14 @@ void setup() {
 void loop() {
   while (Serial.available()) {
 
-
-      digitalWrite(ledPin, HIGH); //LED on while receiving
-
     incoming = Serial.readString();
     Serial.println(incoming);
+    if (incoming == "On")
+    {digitalWrite(ledPin, HIGH);} //LED on while receiving
+    if (incoming == "Off")
+    {digitalWrite(ledPin, LOW);} //LED on while receiving
+
   }
 
-  digitalWrite(ledPin, LOW); //LED off while not receiving
+//  digitalWrite(ledPin, LOW); //LED off while not receiving
 }

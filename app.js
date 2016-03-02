@@ -4,7 +4,7 @@ var sp = new SerialPort("/dev/tty.usbmodem1411", { baudrate: 9600 });
 
 var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elasticbeanstalk.com');
   socket.on('connect', function(){
-    console.log('connected to server captain');
+    console.log('Client App is Up and Running Captain!');
 
 });
 
@@ -15,10 +15,12 @@ socket.on('message', function(msg){
 
     message = msg;
     console.log(message);
+    write();
 });
 
 function write() {
     sp.open(function(err) {
+        if (err) { console.log(err); next;}
         console.log("Writing serial data: " + message);
         sp.write(message, function(err, res) {
                 if (err) { console.log(err); }
@@ -27,5 +29,5 @@ function write() {
     });
 }
 
-setTimeout(write, 1000); //wait 1s for everything to initialize correctly
-setInterval(write, 5000); //write data every 5s
+//setTimeout(write, 1000); //wait 1s for everything to initialize correctly
+//setInterval(write, 5000); //write data every 5s
