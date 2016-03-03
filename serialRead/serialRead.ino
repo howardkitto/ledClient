@@ -1,8 +1,10 @@
-const int ledPin = 3;
+const int greenLedPin = 5;
+const int redLedPin = 13;
 String incoming = "";
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  pinMode(greenLedPin, OUTPUT);
+    pinMode(redLedPin, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -11,12 +13,11 @@ void loop() {
 
     incoming = Serial.readString();
     Serial.println(incoming);
-    if (incoming == "On")
-    {digitalWrite(ledPin, HIGH);} //LED on while receiving
-    if (incoming == "Off")
-    {digitalWrite(ledPin, LOW);} //LED on while receiving
 
-  }
-
-//  digitalWrite(ledPin, LOW); //LED off while not receiving
+if (incoming == "On")
+        {digitalWrite(greenLedPin, HIGH);}
+else if (incoming == "Off")
+        {digitalWrite(greenLedPin, LOW);}
 }
+}
+
