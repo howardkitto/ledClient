@@ -14,10 +14,14 @@ void loop() {
     incoming = Serial.readString();
     Serial.println(incoming);
 
-if (incoming == "On")
+if (incoming == "GreenOn")
         {digitalWrite(greenLedPin, HIGH);}
-else if (incoming == "Off")
+else if (incoming == "GreenOff")
         {digitalWrite(greenLedPin, LOW);}
+else if (incoming == "RedOn")
+        {digitalWrite(redLedPin, HIGH);}
+else if (incoming == "RedOff")
+        {digitalWrite(redLedPin, LOW);}
 }
 }
 

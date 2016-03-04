@@ -1,5 +1,7 @@
+var localConfig = require('./config/config.js');
 var SerialPort = require("serialport").SerialPort
-var sp = new SerialPort("/dev/tty.usbmodem1411", { baudrate: 9600 });
+var sp = new SerialPort(localConfig.serialPort, { baudrate: 9600 });
+
 
 
 var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elasticbeanstalk.com');
