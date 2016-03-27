@@ -10,18 +10,23 @@ void setup() {
 
 void loop() {
   while (Serial.available()) {
-
     incoming = Serial.readString();
     Serial.println(incoming);
-
 if (incoming == "GreenOn")
-        {digitalWrite(greenLedPin, HIGH);}
+        {
+        digitalWrite(greenLedPin, HIGH);}
 else if (incoming == "GreenOff")
         {digitalWrite(greenLedPin, LOW);}
 else if (incoming == "RedOn")
         {digitalWrite(redLedPin, HIGH);}
 else if (incoming == "RedOff")
         {digitalWrite(redLedPin, LOW);}
-}
+
+ if(!Serial){
+ Serial.println("No Serial!")};
+
+//     Serial.println("lock\r");
+  }
+
 }
 
