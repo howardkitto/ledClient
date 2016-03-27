@@ -1,10 +1,10 @@
 var localConfig = require('./config/config.js');
 var SerialPort = require("serialport").SerialPort
-//var sp = new SerialPort(localConfig.serialPort, { baudrate: 9600 });
+var sp = new SerialPort(localConfig.serialPort, { baudrate: 9600 });
 
 var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elasticbeanstalk.com');
 
-var socket = require('socket.io-client')('http://localhost:3000');
+//var socket = require('socket.io-client')('http://localhost:3000');
 
 var arduinoAck = '';
 
@@ -38,7 +38,6 @@ function serialPortClosing(){
 function arduinoAckFunc(buffer){
     arduinoAck += buffer.toString();
     if (arduinoAck.indexOf('\r') >= 0) {
-      console.log(arduinoAck.trim());
       socket.emit('arduinoAck', arduinoAck.trim());
       arduinoAck = '';
     }
