@@ -2,15 +2,15 @@ var localConfig = require('./config/config.js');
 var SerialPort = require("serialport").SerialPort
 var sp = new SerialPort(localConfig.serialPort, { baudrate: 9600 });
 
-var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elasticbeanstalk.com');
+//var socket = require('socket.io-client')('http://ledserver-dev.eu-west-1.elasticbeanstalk.com');
 
-//var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require('socket.io-client')('http://localhost:3000');
 
 var arduinoAck = '';
 
 socket.on('connect', socketConnected)
 socket.on('connect_error', socketError)
-socket.on('buttonClick', buttonClicked)
+socket.on('Light Control', buttonClicked)
 sp.on('open', serialPortOpen)
 sp.on('close', serialPortClosing)
 sp.on('data', arduinoAckFunc)
